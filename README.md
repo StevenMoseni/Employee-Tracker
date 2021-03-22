@@ -21,6 +21,7 @@ App for business to be able to view and manage the departments, roles, and emplo
 - [Example Gif](#example-gif)
 - [Repository Link](#Repository)
 - [Screenshot](#Screenshot)
+- [Screencastify Demo](#Screencastify-Demo)
 - [Licence](#Licence)
 - [GitHub Info](#GitHub)
 
@@ -70,6 +71,10 @@ App for business to be able to view and manage the departments, roles, and emplo
 ## Screenshot
 
 <img src="Assets/Screen-Shot.png">
+
+## Screencastify Demo
+
+[Demo Link](https://drive.google.com/file/d/1i7EQZhMIguWtfUeMXhSYGwUME3yDiqeG/view)
 
 
 ## GitHub
