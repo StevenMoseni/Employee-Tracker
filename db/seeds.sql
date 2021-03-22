@@ -1,6 +1,6 @@
 USE employee_DB;
 
--- Department Seeds --
+-- Department Seeds 
 INSERT INTO department (id, name)
 VALUES (1, 'HR');
 
