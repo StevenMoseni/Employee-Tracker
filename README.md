@@ -13,7 +13,6 @@ App for business to be able to view and manage the departments, roles, and emplo
 3. NPM modules
 4. Javascript
 
-
 # Table of Contents
 
 - [Installation](#installation)
