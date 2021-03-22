@@ -1,5 +1,6 @@
 const mysql = require('mysql');
 const inquirer = require('inquirer');
+const consoleTable = require('console.table');
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -17,30 +18,65 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
   if (err) throw err;
+  console.log(`connected as id ${connection.threadId}`);
   mainPrompt();
 });
-const mainPrompt = () => {
-    inquirer
-    .prompt({
-      name: 'choice',
-      type: 'list',
-      message: 'What do you want to do?',
-      choices: ['VIEW_DEPARTMENTS', 'VIEW_ROLES', 'VIEW_EMPLOYEES'],
-    })
-    .then((answer) => {
-      // based on their answer, either call the bid or the post functions
-      if (answer.choice === 'VIEW_DEPARTMENTS') {
-        viewDepartments();
-      } else if (answer.choice === 'VIEW_ROLES') {
-        viewRoles();
-      } else if (answer.choice === 'VIEW_EMPLOYEES') {
-        viewEmployees();
-      } else {
-          console.log("GOODBYE!")
-        connection.end();
+// Main Prompt
+const mainPrompt = () =>
+  inquirer
+    .prompt([
+      {
+        name: 'action',
+        type: 'list',
+        message: 'What would you like to do? (Use Arrow Keys)',
+        choices: [
+          'View All Employees',
+          'View All Departments',
+          'View All Roles',
+          'Add Employee',
+          'Add Department',
+          'Add Role',
+          'Update Employee Role',
+          'Exit',
+        ],
+      },
+    ])
+    .then(answer => {
+      switch (answer.action) {
+        case 'View All Employees':
+          viewAllEmployees();
+          break;
+
+        case 'View All Departments':
+          viewAllDepartments();
+          break;
+
+        case 'View All Roles':
+          viewAllRoles();
+          break;
+
+        case 'Add Employee':
+          addEmployee();
+          break;
+
+        case 'Add Department':
+          addDepartment();
+          break;
+
+        case 'Add Role':
+          addRole();
+          break;
+
+        case 'Update Employee Role':
+          updateEmployeeRole();
+          break;
+
+        case 'Exit':
+          connection.end();
+          break;
       }
     });
-}
+    
 const viewDepartments = () => {
 
     connection.query('SELECT * FROM department', (err, results) => {
